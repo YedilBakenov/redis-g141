@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 import org.springframework.data.redis.core.index.Indexed;
+
+import java.util.concurrent.TimeUnit;
 
 @RedisHash("users")
 @AllArgsConstructor
@@ -23,4 +26,7 @@ public class User {
     private String email;
     @Indexed
     private String city;
+
+    @TimeToLive(unit = TimeUnit.SECONDS)
+    private Long ttl;
 }

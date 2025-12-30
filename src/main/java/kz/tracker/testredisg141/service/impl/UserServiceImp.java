@@ -27,6 +27,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User addUser(User user) {
+        if(user.getTtl()==null) user.setTtl(10L);
         return userRepository.save(user);
     }
 }
